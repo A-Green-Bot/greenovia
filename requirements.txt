@@ -1,0 +1,8 @@
+flask
+flask-bcrypt
+flask_sqlalchemy
+flask-session
+mysql-connector-python
+mysql
+python-dotenv
+sqlalchemy
