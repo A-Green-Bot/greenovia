@@ -7,112 +7,106 @@
   <title>Greenovia | Save Our Planet</title>
   <link rel="icon" href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}" type="image/jpg">
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.321.0/font/lucide.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
   <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="nav-logo">
-        <img src="{{ url_for('static', filename='images/logos/logo.jpg') }}" alt="Greenovia">
-        <span>Greenovia</span>
-      </a>
-      
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+    <ul class="nav">
+      <li>
+        <a href="/" class="nav-logo">
+          <img src="{{ url_for('static', filename='images/logos/logo.jpg') }}" alt="Greenovia">
+          Greenovia
+        </a>
+      </li>
       <div class="nav-links">
-        <a href="/greenovia" class="nav-link">Our AI</a>
-        <a href="/login" class="nav-link">Login</a>
-        <a href="/signup" class="nav-link">Signup</a>
+        <li><a href="/greenovia" class="nav-link">Our AI</a></li>
+        <li><a href="/login" class="nav-link">Login</a></li>
+        <li><a href="/signup" class="nav-link">Signup</a></li>
       </div>
-    </div>
+    </ul>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
-      <h1 class="typing">Build<br>A Better Planet</h1>
-      <p data-aos="fade-up" data-aos-delay="200">Join us in our mission to create a sustainable future through AI-powered recycling solutions.</p>
-      <a href="/greenovia" class="button button-primary" data-aos="fade-up" data-aos-delay="400">
+      <h1 class="typing">Build A Better Planet</h1>
+      <p>Join us in our mission to create a sustainable future through AI-powered recycling solutions.</p>
+      <a href="/greenovia" class="button button-primary">
         <i class="lucide-zap"></i>
         Try out Zeebo
       </a>
     </div>
   </section>
 
-  <section id="facts" class="section">
-    <h2 class="section-title" data-aos="fade-up">Did You Know?</h2>
+  <section id="facts">
+    <h2>Did You Know?</h2>
     <div class="facts-grid">
-      <div class="fact-card" data-aos="fade-up">
+      <div class="fact-card">
         <img src="{{ url_for('static', filename='images/pollution1.jpg') }}" alt="Pollution Fact">
         <div class="fact-content">
           <p>Global waste production is equivalent to 6.5 million blue whales.</p>
         </div>
       </div>
-      <div class="fact-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="fact-card">
         <img src="{{ url_for('static', filename='images/pollution2.jpg') }}" alt="Air Pollution">
         <div class="fact-content">
           <p>Air pollution during pregnancy increases birth defect risks.</p>
         </div>
       </div>
-      <div class="fact-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="fact-card">
         <img src="{{ url_for('static', filename='images/pollution3.jpg') }}" alt="Car Emissions">
         <div class="fact-content">
           <p>11 million cars were designed to cheat air pollution tests.</p>
         </div>
       </div>
-      <div class="fact-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="fact-card">
         <img src="{{ url_for('static', filename='images/recycling.jpg') }}" alt="Recycling">
         <div class="fact-content">
           <p>Recycling plastic saves 88% of the energy required to make new plastic.</p>
         </div>
       </div>
     </div>
-    <button id="factBtn" class="button button-primary" data-aos="fade-up">More Facts</button>
+    <button id="factBtn" class="button button-primary">More Facts</button>
   </section>
 
-  <section id="mission" class="section">
+  <section id="mission">
     <div class="mission-content">
-      <h2 class="section-title" data-aos="fade-up">Why Greenovia?</h2>
-      <p data-aos="fade-up" data-aos-delay="100">Massive trash accumulation threatens our planet. Greenovia's AI-powered machine helps educate users on waste separation.</p>
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">How long did it take?</h2>
-      <p data-aos="fade-up" data-aos-delay="300">After a month of development, Greenovia is ready to create change!</p>
+      <h2>Why Greenovia?</h2>
+      <p>Massive trash accumulation threatens our planet. Greenovia's AI-powered machine helps educate users on waste separation.</p>
+      <h2>How long did it take?</h2>
+      <p>After six years of development, Greenovia is ready to create change!</p>
     </div>
   </section>
 
-  <section id="take-action" class="section">
-    <h2 class="section-title" data-aos="fade-up">Save Mother Earth, Take Action!</h2>
-    <p data-aos="fade-up" data-aos-delay="100">We introduce GreenBot, an AI-driven tool that helps users separate and recycle waste efficiently.</p>
-    <div class="video-container" data-aos="zoom-in" data-aos-delay="200">
+  <section id="take-action">
+    <h2>Save Mother Earth, Take Action!</h2>
+    <p>We introduce GreenBot, an AI-driven tool that helps users separate and recycle waste efficiently.</p>
+    <div class="video-container">
       <video controls>
         <source src="https://uploads.codesandbox.io/uploads/user/fdaa2455-26f2-4b00-b55c-68a3a752f939/wuE--animation+for+codeathon.mov" type="video/mp4">
       </video>
     </div>
-    <a href="/greenovia" class="button button-primary" data-aos="fade-up" data-aos-delay="300">
+    <a href="/greenovia" class="button button-primary">
       <i class="lucide-recycle"></i>
       Try out Zeebo
     </a>
   </section>
 
-  <section id="team" class="section">
-    <h2 class="section-title" data-aos="fade-up">Meet the Creators</h2>
+  <section id="team">
+    <h2>Meet the Creators</h2>
     <div class="team-grid">
-      <div class="team-member" data-aos="fade-up">
+      <div class="team-member">
         <img src="{{ url_for('static', filename='images/team/avatar-female.png') }}" alt="Ashley Brown">
         <p>Ashley Brown</p>
       </div>
-      <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-member">
         <img src="{{ url_for('static', filename='images/team/avatar-female.png') }}" alt="Pranathi Bhat">
         <p>Pranathi Bhat</p>
       </div>
-      <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+      <div class="team-member">
         <img src="{{ url_for('static', filename='images/team/daniel-favour-dohou.jpg') }}" alt="Daniel Dohou">
         <p>Daniel Dohou</p>
       </div>
-      <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+      <div class="team-member">
         <img src="{{ url_for('static', filename='images/team/avatar-male.png') }}" alt="Darsh Chavre">
         <p>Darsh Chavre</p>
       </div>
@@ -130,7 +124,6 @@
     </p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

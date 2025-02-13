@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Greenovia | Save Our Planet</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}"
+      type="image/jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav">
+        <li>
+          <a href="/">
+            <img
+              src="{{ url_for('static', filename='images/logos/logo.jpg') }}"
+              alt="Greenovia"
+              class="profile-icon"
+            />
+          </a>
+          A Green Bot
+        </li>
+        <li><a href="/greenovia">Our AI</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1 class="typing" id="heading-top">Build A Better Planet</h1>
+    </header>
+
+    <section id="intro">
+      <p>
+        Pollution: The presence of substances in the environment causing harmful
+        effects.
+      </p>
+      <p>Recycle: Converting waste into reusable material.</p>
+      <p>
+        Greenovia, founded by innovative minds, aims to reduce pollution through
+        AI-powered waste classification.
+      </p>
+    </section>
+
+    <section id="facts">
+      <h2>Did You Know?</h2>
+      <div class="fact-container">
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution1.jpg') }}" alt="Pollution Fact" />
+          <p>
+            Global waste production is equivalent to 6.5 million blue whales.
+          </p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution2.jpg') }}" alt="Air Pollution" />
+          <p>Air pollution during pregnancy increases birth defect risks.</p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution3.jpg') }}" alt="Car Emissions" />
+          <p>11 million cars were designed to cheat air pollution tests.</p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/recycling.jpg') }}" alt="Recycling" />
+          <p>
+            Recycling plastic saves 88% of the energy required to make new
+            plastic.
+          </p>
+        </div>
+      </div>
+      <button id="factBtn">More Facts</button>
+    </section>
+
+    <section id="mission">
+      <h2>Why Greenovia?</h2>
+      <p>
+        Massive trash accumulation threatens our planet. Greenovia’s AI-powered
+        machine helps educate users on waste separation.
+      </p>
+      <h2>How long did it take?</h2>
+      <p>
+        After six years of development, Greenovia is ready to create change!
+      </p>
+    </section>
+
+    <section id="take-action">
+      <h2>Save Mother Earth, Take Action!</h2>
+      <p>
+        We introduce GreenBot, an AI-driven tool that helps users separate and
+        recycle waste efficiently.
+      </p>
+      <video controls width="500" height="280">
+        <source
+          src="https://uploads.codesandbox.io/uploads/user/fdaa2455-26f2-4b00-b55c-68a3a752f939/wuE--animation+for+codeathon.mov"
+          type="video/mp4"
+        />
+      </video>
+      <button class="cta-button" onclick="window.location.href='/greenovia'">
+        Try out Zeebo
+      </button>
+    </section>
+
+    <section id="team">
+      <h2>Meet the Creators</h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-female.png') }}"
+            alt="Ashley Brown"
+          />
+          <p>Ashley Brown</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-female.png') }}"
+            alt="Pranathi Bhat"
+          />
+          <p>Pranathi Bhat</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/daniel-favour-dohou.jpg') }}"
+            alt="Daniel Dohou"
+          />
+          <p>Daniel Dohou</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-male.png') }}"
+            alt="Darsh Chavre"
+          />
+          <p>Darsh Chavre</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <!-- img src="images/logo.jpg" width="75" height="75" / -->
+      <p>&copy; 2025 Greenovia | Formerly "A Green Bot" | <a href="https://linktr.ee/dohoudanielfavour" target="_blank">Daniel Dohou</a>| All Rights Reserved</p>
+    </footer>
+  </body>
+</html>
