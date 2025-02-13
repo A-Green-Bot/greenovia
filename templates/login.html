@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title></title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}" type="image/jpg">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
 </head>
 <body>
     <h2>Login</h2>
@@ -10,6 +13,6 @@
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a></p>
+    <p>Don't have an account? <a href="{{ url_for('signUpNewUser') }}">Sign up here</a></p>
 </body>
 </html>

@@ -4,92 +4,147 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Greenovia | A Green Bot (Revamped)</title>
-
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- Add web page logo -->
-    <link rel="icon" href="webpage-logo/a-green-bot.jpg" type="image/jpg">
+    <title>Greenovia | Save Our Planet</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}"
+      type="image/jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   </head>
-
   <body>
     <nav>
       <ul class="nav">
-        <li class="nav1"><a id = "ACTIVE" href="index.html">Home Page</a></li>
-        <li class="nav1"><a href="takeaction.html"> Take action </a></li>
-        <li class="nav1"><a href="machinelearning.html"> Our Solution </a></li>
-        <li class="nav1"><a href="contactus.html"> Support </a></li>
-
-
+        <li>
+          <a href="/">
+            <img
+              src="{{ url_for('static', filename='images/logos/logo.jpg') }}"
+              alt="Greenovia"
+              class="profile-icon"
+            />
+          </a>
+          A Green Bot
+        </li>
+        <li><a href="/greenovia">Our AI</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
       </ul>
     </nav>
 
+    <header>
+      <h1 class="typing" id="heading-top">Build A Better Planet</h1>
+    </header>
 
-  <div class="intro">
-    <h1 class = "typing" id="heading-top"> Build A Better Planet </h1>
-  
-
-      <div class = "fade-in-text">
-      <p>Pollution : The presence in or introduction into the environment of a substance or thing that has harmful or poisonous effects.</p>
-      <p> Recycle : Convert (waste) into reusable material. </p>
-      <p> Green Bots was founded by four beautiful minds: Ashley Brown, Pranathi Bhat, Darsh Chavre and Daniel Dohou. These young minds and future tech giants came together to innovate and solve the problem of Global Pollution.
-        The difficulties caused by the contamination of Earth’s resources are saddening, an example is the landfills, and their threat to aquatic life, among many others.
-        The contamination of the Earth is a global problem that can never be totally stopped, because as humans, we tend to create more waste as we live. Pollution cannot be stopped, but it can be greatly reduced through Recycling. 
-        At Green Bots, we try our very best to create awareness on environmental pollution. We have trained an AI model, GreenBot. GreenBot helps our users identify human waste, and classify these wastes as biodegradable, food waste, non biodegradables, and recyclables. Then, our users are educated on how they can recycle waste.
-        We are confident in our product, and it helps us raise awareness on how we can save Mother Earth from the peril caused by pollution and environmental contamination.
+    <section id="intro">
+      <p>
+        Pollution: The presence of substances in the environment causing harmful
+        effects.
       </p>
+      <p>Recycle: Converting waste into reusable material.</p>
+      <p>
+        Greenovia, founded by innovative minds, aims to reduce pollution through
+        AI-powered waste classification.
+      </p>
+    </section>
+
+    <section id="facts">
+      <h2>Did You Know?</h2>
+      <div class="fact-container">
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution1.jpg') }}" alt="Pollution Fact" />
+          <p>
+            Global waste production is equivalent to 6.5 million blue whales.
+          </p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution2.jpg') }}" alt="Air Pollution" />
+          <p>Air pollution during pregnancy increases birth defect risks.</p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/pollution3.jpg') }}" alt="Car Emissions" />
+          <p>11 million cars were designed to cheat air pollution tests.</p>
+        </div>
+        <div class="fact">
+          <img src="{{ url_for('static', filename='images/recycling.jpg') }}" alt="Recycling" />
+          <p>
+            Recycling plastic saves 88% of the energy required to make new
+            plastic.
+          </p>
+        </div>
       </div>
-    </div>
+      <button id="factBtn">More Facts</button>
+    </section>
 
-    <div class = "logo"> 
-        <img src="images/logo.jpg" width = "75" height = "75">
+    <section id="mission">
+      <h2>Why Greenovia?</h2>
+      <p>
+        Massive trash accumulation threatens our planet. Greenovia’s AI-powered
+        machine helps educate users on waste separation.
+      </p>
+      <h2>How long did it take?</h2>
+      <p>
+        After six years of development, Greenovia is ready to create change!
+      </p>
+    </section>
+
+    <section id="take-action">
+      <h2>Save Mother Earth, Take Action!</h2>
+      <p>
+        We introduce GreenBot, an AI-driven tool that helps users separate and
+        recycle waste efficiently.
+      </p>
+      <video controls width="500" height="280">
+        <source
+          src="https://uploads.codesandbox.io/uploads/user/fdaa2455-26f2-4b00-b55c-68a3a752f939/wuE--animation+for+codeathon.mov"
+          type="video/mp4"
+        />
+      </video>
+      <button class="cta-button" onclick="window.location.href='/greenovia'">
+        Try out Zeebo
+      </button>
+    </section>
+
+    <section id="team">
+      <h2>Meet the Creators</h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-female.png') }}"
+            alt="Ashley Brown"
+          />
+          <p>Ashley Brown</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-female.png') }}"
+            alt="Pranathi Bhat"
+          />
+          <p>Pranathi Bhat</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/daniel-favour-dohou.jpg') }}"
+            alt="Daniel Dohou"
+          />
+          <p>Daniel Dohou</p>
+        </div>
+        <div class="team-member">
+          <img
+            src="{{ url_for('static', filename='images/team/avatar-male.png') }}"
+            alt="Darsh Chavre"
+          />
+          <p>Darsh Chavre</p>
+        </div>
       </div>
+    </section>
 
-    <div id = "fact-box">
-        <center><h1 id = "fact-head"> Let's learn the facts :  </h1></center>
-
-    <div id = "box2">
-    
-        <div id = "fact-img">
-        <center><img src = "images/pollution1.jpg" width = 300px; alt = "">
-         <p id = "words"> <b> Did you know? </b> </p>
-          <p id = "words"> <b> </b> Every year, the global population generates approximately 1.3 billion
-            tons of waste (equivalent to the weight of 6.5 million blue whales).</p>
-          </div>
-          
-          <div id = "fact-img">
-          <center><img src = "images/pollution2.jpg" alt = "">
-            <p id = "words"> <b> No way... </b> </p>
-            <p id = "words"> <b> </b> Exposure to air pollution during early pregnancy increases the risk of
-              birth defects.</p>
-            </div>
-      
-          <div id = "fact-img">
-          <center><img src = "images/pollution3.jpg" alt = "">
-            <p id = "words"> <b> Wait what. </b> </p>
-            <p id = "words"> <b> </b> About 11 million cars were designed to cheat air pollution tests.</p>
-            </div>
-      
-          <div id = "fact-img">
-          <center><img src = "images/recycle2.jpg" alt = "">
-          <p id = "words"> <b> Really?? </b> </p>
-          <p id = "words"> <b> </b> Recycling plastic takes 88% less energy than making it from raw
-            materials.</p>
-          </div>
-          
-     </div>
-
-     <div id = "factDisplay">
-      <h1> Click me for more facts ! </h1>
-      <button id = "factBtn"> FACTS </button>
-      </div>
-      <p id = "fact"> </p>
-
-
-
-
-      <script src="index.js"></script> 
+    <footer>
+      <!-- img src="images/logo.jpg" width="75" height="75" / -->
+      <p>&copy; 2025 Greenovia | Formerly "A Green Bot" | <a href="https://linktr.ee/dohoudanielfavour" target="_blank">Daniel Dohou</a>| All Rights Reserved</p>
+    </footer>
   </body>
 </html>
-
-<!-- what we can do when we want to make changes is fork the project and then copy and paste the code in at a later time-->

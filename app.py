@@ -165,45 +165,27 @@ def logout():
     return redirect(url_for('logInExistingUser'))
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    """Handle 404 errors"""
+@app.route('/greenovia')
+def zeebo():
+    """
+    Zeebo page route
+    """
     if 'userId' in session:
         user = Users.query.get(session['userId'])
-        return render_template('404.html', user=user), 404
+        flash('Login successful! Welcome to your home!', 'success')
+        return render_template('zeebo.html', user=user)
+    # return render_template('login.html')
     return redirect(url_for('logInExistingUser'))
 
 
-@app.route('/update-profile', methods=['POST'])
-def updateProfile():
-    """
-    Handle user profile updates
-    """
-    if 'userId' not in session:
-        flash('You must be logged in to update your profile.', 'error')
-        return redirect('/login')
-
-    user = Users.query.get(session['userId'])
-
-    if not user:
-        flash('User not found.', 'error')
-        return redirect('/home')
-
-    user.firstname = request.form.get('firstname', user.firstname)
-    user.lastname = request.form.get('lastname', user.lastname)
-    user.email = request.form.get('email', user.email)
-
-    # Update the updated_at timestamp
-    user.updated_at = datetime.utcnow()
-
-    try:
-        db.session.commit()
-        flash('Profile updated successfully!', 'success')
-    except Exception as e:
-        db.session.rollback()
-        flash('Error updating profile. Please try again.', 'error')
-
-    return redirect('/profile')
+@app.errorhandler(404)
+def page_not_found(e):
+    """Handle 404 errors"""
+    # if 'userId' in session:
+    #     user = Users.query.get(session['userId'])
+    #     return render_template('404.html', user=user), 404
+    # return redirect(url_for('logInExistingUser'))
+    return render_template('404.html')
 
 
 if __name__ == '__main__':
