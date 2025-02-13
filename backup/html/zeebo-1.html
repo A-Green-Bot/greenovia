@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Zeebo 🤖 | AI-Powered Waste Sorting</title>
+
+  <link rel="stylesheet" href="machine.learning.css" />
+  <link rel="icon" href="webpage-logo/logo/logo.jpg" type="image/jpg">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav">
+      <li class="nav1"><a href="index.html">Home</a></li>
+      <li class="nav1"><a href="takeaction.html">Take Action</a></li>
+      <li class="nav1">
+        <a id="ACTIVE" href="machinelearning.html">Our Solution</a>
+      </li>
+      <li class="nav1"><a href="contactus.html">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="intro">
+    <h1 id="heading-top" class="center-text">Zeebo 🤖</h1>
+    <p id="machine_desc">
+      Zeebo is an AI-powered waste sorting system designed to streamline recycling. 
+      By leveraging machine learning, Zeebo <strong>automatically identifies and classifies waste</strong>
+      into organic or recyclable categories. This technology enhances waste management 
+      efficiency, reduces landfill pollution, and maximizes the recycling potential 
+      of materials such as plastic bottles and bags.
+    </p>
+  </header>
+
+  <!-- Mission Statement -->
+  <section class="mission">
+    <p id="mission_s">
+      Initially founded as <strong>GreenBot</strong>, our mission is to combat <strong>global environmental pollution</strong>
+      by revolutionizing the recycling process. With AI-powered sorting, we aim to significantly
+      increase the amount of reusable materials while making recycling <strong><em>smarter, faster, and more efficient</em></strong>.
+    </p>
+  </section>
+
+  <!-- Try It Out Section -->
+  <section class="try-it-out center-content">
+    <h2>Try It Out! 🚀</h2>
+    <button id="TIMBTN" type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+  </section>
+
+  <!-- How to Use Zeebo Section -->
+  <section class="how-to-use">
+    <h2>How to Use Zeebo</h2>
+    <p>Follow these simple steps to use Zeebo for waste sorting:</p>
+    <ol>
+      <li><strong>Click the "Start" button</strong> to activate Zeebo.</li>
+      <li><strong>Allow camera access</strong> so Zeebo can analyze waste items.</li>
+      <li><strong>Hold up an item</strong> (e.g., plastic bottle, paper, food waste) in front of the camera.</li>
+      <li><strong>Wait a few seconds</strong> while Zeebo processes the image.</li>
+      <li><strong>Check the classification</strong> displayed on the screen.</li>
+      <li><strong>Dispose of the waste</strong> accordingly, using the recommended recycling method.</li>
+    </ol>
+    <p>Zeebo helps reduce waste misclassification, ensuring more materials are recycled properly! 🌍♻️</p>
+  </section>
+
+  <!-- Machine Learning Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/BjdA3e2S2/";
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load model and setup webcam
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      webcam = new tmImage.Webcam(400, 400, true);
+      await webcam.setup();
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+
+      document.getElementById("webcam-container").appendChild(webcam.canvas);
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.appendChild(document.createElement("div"));
+      }
+    }
+
+    async function loop() {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+
+    async function predict() {
+      const prediction = await model.predict(webcam.canvas);
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.childNodes[i].innerHTML = 
+          prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+      }
+    }
+  </script>
+
+  <!-- Machine Learning Explanation -->
+  <section class="ml-explanation">
+    <h2 id="what_is">What is Machine Learning? 🤖</h2>
+    <p id="what_answer">
+      Machine Learning (ML) is a <strong>subset of Artificial Intelligence (AI)</strong> that enables computers 
+      to learn patterns from data without being explicitly programmed. In <strong>Zeebo's case</strong>, 
+      the algorithm has been trained on thousands of images to recognize <strong>different types of waste</strong>. 
+      Using this knowledge, Zeebo can <strong>automatically classify</strong> new waste items, ensuring they are sorted 
+      into the correct recycling category.
+    </p>
+  </section>
+</body>
+</html>

@@ -59,12 +59,3 @@ function stopZeebo() {
     document.getElementById("startButton").textContent = "Start Zeebo";
     document.getElementById("startButton").onclick = init;
 }
-
-// Mobile menu toggle
-const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-const navLinks = document.querySelector(".nav-links");
-
-mobileMenuBtn.addEventListener("click", () => {
-    mobileMenuBtn.classList.toggle("active");
-    navLinks.classList.toggle("active");
-});

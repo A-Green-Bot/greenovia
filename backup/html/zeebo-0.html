@@ -27,9 +27,9 @@
 
             <div class="nav-links">
                 <a href="/" class="nav-link">Home</a>
-                <br>
-                <!-- a href="/greenovia" class="nav-link">Our AI</!-- -->
-                <a href="/logout" class="nav-link button-secondary logout-btn">Logout</a>
+                <a href="/takeaction" class="nav-link">Take Action</a>
+                <a href="/greenovia" class="nav-link">Our Solution</a>
+                <a href="/contactus" class="nav-link">Support</a>
             </div>
         </div>
     </nav>
@@ -37,9 +37,8 @@
     <main class="zeebo-content">
         <section class="hero">
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="welcome-message">Zeebo🤖</h1>
+                <h1 class="welcome-message">Zeebo 🤖</h1>
                 <p class="sub-message">AI-Powered Waste Sorting</p>
-                <p class="sub-message">Swipe Up 🤸‍♂️</p>
             </div>
         </section>
 
@@ -70,7 +69,7 @@
             <div class="container" data-aos="fade-up">
                 <h2 class="section-title">Try Zeebo! 🚀</h2>
                 <div class="zeebo-interface">
-                    <button id="startButton" class="button button-primary" onclick="init()">Start Zeebo</button>
+                    <button id="startButton" class="button button-primary" onclick="toggleZeebo()">Start Zeebo</button>
                     <div id="webcam-container" class="webcam-container"></div>
                     <div id="label-container" class="label-container"></div>
                 </div>
