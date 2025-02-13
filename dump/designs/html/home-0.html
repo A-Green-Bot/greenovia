@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to Greenovia | Save Our Planet</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logos/logo.jpg') }}" type="image/jpg">
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.321.0/font/lucide.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <nav class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="{{ url_for('static', filename='images/logos/logo.jpg') }}" alt="Greenovia">
+                <span>Greenovia</span>
+            </a>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="/greenovia" class="nav-link">Zeebo: Our AI</a>
+                <a href="/logout" class="button button-secondary logout-btn">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- main -->
+        <section class="hero">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="welcome-message">
+                    Welcome, Eco Warrior
+                    <span class="user-name">{{ user.firstname }}</span>!
+                </h1>
+                <p class="sub-message">You made it here! 🥳</p>
+                <a href="/try-zeebo" class="button button-primary cta-button" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="lucide-zap"></i>
+                    Try Zeebo
+                </a>
+            </div>
+        </section>
+
+        <!-- section id="eco-impact" class="section">
+            <h2 class="section-title" data-aos="fade-up">Your Eco Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="lucide-recycle"></i>
+                    <h3>Items Recycled</h3>
+                    <p class="impact-number">{{ user.items_recycled }}</p>
+                </div>
+                <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="lucide-tree"></i>
+                    <h3>CO2 Saved</h3>
+                    <p class="impact-number">{{ user.co2_saved }} kg</p>
+                </div>
+                <div class="impact-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="lucide-droplet"></i>
+                    <h3>Water Saved</h3>
+                    <p class="impact-number">{{ user.water_saved }} L</p>
+                </div>
+            </div>
+        </!-->
+
+        <!-- section id="eco-tips" class="section">
+            <h2 class="section-title" data-aos="fade-up">Eco Tip of the Day</h2>
+            <div class="tips-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="tip-card">
+                    <i class="lucide-lightbulb"></i>
+                    <p>{{ daily_tip }}</p>
+                </div>
+            </div>
+        </@section -->
+    <!-- /main -->
+
+    <footer class="footer">
+        <p>&copy; 2025 Greenovia | Formerly "A Green Bot" |
+            <a href="https://linktr.ee/dohoudanielfavour" target="_blank" rel="noopener noreferrer">
+                <i class="lucide-github"></i>
+                Daniel Dohou
+            </a>
+            | All Rights Reserved
+        </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard | Greenovia</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="{{ url_for('static', filename='images/logos/logo.jpg') }}" alt="Greenovia">
+        <span>Greenovia</span>
+      </a>
+      <div class="nav-links">
+        <a href="/greenovia" class="nav-link">Try Zeebo</a>
+        <a href="/logout" class="nav-link">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="dashboard-container">
+    <div class="welcome-message">
+      <h1>Welcome, {{ user.firstname }}, the Eco Warrior! 🌍</h1>
+      <p>You made it here! 🥳</p>
+      <a href="/greenovia" class="button button-primary">Try Zeebo</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Greenovia | Saving the planet, one click at a time!</p>
+  </footer>
+
+</body>
+</html>
