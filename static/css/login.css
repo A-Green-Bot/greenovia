@@ -12,6 +12,23 @@
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.signup-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-normal);
+}
+
+.signup-link a:hover {
+  color: var(--primary-dark);
+}
+
 /* Form wrapper */
 .form-wrapper {
   background: var(--white);
