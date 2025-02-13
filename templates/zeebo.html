@@ -1,136 +1,114 @@
-<DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-      <title>Zeebo 🤖</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Zeebo 🤖 | AI-Powered Waste Sorting</title>
 
-      <link rel="stylesheet" href="machine.learning.css" />
+  <link rel="stylesheet" href="machine.learning.css" />
+  <link rel="icon" href="webpage-logo/zeebo.jpg" type="image/jpg">
+</head>
 
-      <!-- Add web page logo -->
-      <link rel="icon" href="webpage-logo/zeebo.jpg" type="image/jpg">
-    </head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul class="nav">
+      <li class="nav1"><a href="index.html">Home</a></li>
+      <li class="nav1"><a href="takeaction.html">Take Action</a></li>
+      <li class="nav1">
+        <a id="ACTIVE" href="machinelearning.html">Our Solution</a>
+      </li>
+      <li class="nav1"><a href="contactus.html">Support</a></li>
+    </ul>
+  </nav>
 
-    <body>
-      <nav>
-        <ul class="nav">
-          <li class="nav1"><a href="index.html">Home Page</a></li>
-          <li class="nav1"><a href="takeaction.html"> Take action </a></li>
-          <li class="nav1">
-            <a id="ACTIVE" href="machinelearning.html"> Our Solution </a>
-          </li>
-          <li class="nav1"><a href="contactus.html"> Support </a></li>
-        </ul>
-      </nav>
+  <!-- Hero Section -->
+  <header class="intro">
+    <h1 id="heading-top" class="center-text">Zeebo 🤖</h1>
+    <p id="machine_desc">
+      Zeebo is an AI-powered waste sorting system designed to streamline recycling. 
+      By leveraging machine learning, Zeebo <strong>automatically identifies and classifies waste</strong>
+      into organic or recyclable categories. This technology enhances waste management 
+      efficiency, reduces landfill pollution, and maximizes the recycling potential 
+      of materials such as plastic bottles and bags.
+    </p>
+  </header>
 
-      <div class="intro">
-        <center>
-          <h1 id="heading-top">
-            Zeebo
-          </h1>
-        </center>
+  <!-- Logo Section -->
+  <!-- div class="logo center-content">
+    <img src="images/logo.jpg" width="75" height="75" alt="Zeebo Logo" />
+  </!-->
 
-        <center>
-          <p id="machine_desc">
-            This machine learning algorithm will be used to sort between organic
-            and recyclable trash, where a camera can be placed on the overhead
-            of a conveyor belt, which can automatically detect whether the item
-            is organic or recyclable, which then moves the article of trash to
-            the proper mode of waste management, which can increase the amount
-            of recyclable material made from each bottle or bag, and streamline
-            the process from the recycling bin all the way to being another
-            product in a store.
-          </p>
-        </center>
-      </div>
+  <!-- Mission Statement -->
+  <section class="mission">
+    <p id="mission_s">
+      Initially founded as <strong>GreenBot</strong>, our mission is to combat <strong>global environmental pollution</strong>
+      by revolutionizing the recycling process. With AI-powered sorting, we aim to significantly
+      increase the amount of reusable materials while making recycling <strong><em>smarter, faster, and more efficient</em></strong>.
+    </p>
+  </section>
 
-      <div class="logo">
-        <img src="images/logo.jpg" width="75" height="75" />
-      </div>
+  <!-- Try It Out Section -->
+  <section class="try-it-out center-content">
+    <h2>Try It Out! 🚀</h2>
+    <button id="TIMBTN" type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+  </section>
 
-      <p id="mission_s">
-        Originally founded as GreenBot, our mission is to help reduce global
-        environmental pollution and make the world a better place by increasing
-        the amount of material that can be recycled, and making the process of
-        doing so much more efficient, via grouping materials categorically.
-      </p>
+  <!-- Machine Learning Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+  <script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/BjdA3e2S2/";
+    let model, webcam, labelContainer, maxPredictions;
 
-      <div id="TIM">Try it out !</div>
-      <button id="TIMBTN" type="button" onclick="init()">Start</button>
-      <div id="webcam-container"></div>
-      <div id="label-container"></div>
-      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-      <script type="text/javascript">
-        // More API functions here:
-        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+    // Load model and setup webcam
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
 
-        // the link to your model provided by Teachable Machine export panel
-        const URL = "https://teachablemachine.withgoogle.com/models/BjdA3e2S2/";
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
 
-        let model, webcam, labelContainer, maxPredictions;
+      webcam = new tmImage.Webcam(400, 400, true);
+      await webcam.setup();
+      await webcam.play();
+      window.requestAnimationFrame(loop);
 
-        // Load the image model and setup the webcam
-        async function init() {
-          const modelURL = URL + "model.json";
-          const metadataURL = URL + "metadata.json";
+      document.getElementById("webcam-container").appendChild(webcam.canvas);
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.appendChild(document.createElement("div"));
+      }
+    }
 
-          // load the model and metadata
-          // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-          // or files from your local hard drive
-          // Note: the pose library adds "tmImage" object to your window (window.tmImage)
-          model = await tmImage.load(modelURL, metadataURL);
-          maxPredictions = model.getTotalClasses();
+    async function loop() {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
 
-          // Convenience function to setup a webcam
-          const flip = true; // whether to flip the webcam
-          webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
-          await webcam.setup(); // request access to the webcam
-          await webcam.play();
-          window.requestAnimationFrame(loop);
+    async function predict() {
+      const prediction = await model.predict(webcam.canvas);
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.childNodes[i].innerHTML = 
+          prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+      }
+    }
+  </script>
 
-          // append elements to the DOM
-          document
-            .getElementById("webcam-container")
-            .appendChild(webcam.canvas);
-          labelContainer = document.getElementById("label-container");
-          for (let i = 0; i < maxPredictions; i++) {
-            // and class labels
-            labelContainer.appendChild(document.createElement("div"));
-          }
-        }
-
-        async function loop() {
-          webcam.update(); // update the webcam frame
-          await predict();
-          window.requestAnimationFrame(loop);
-        }
-
-        // run the webcam image through the image model
-        async function predict() {
-          // predict can take in an image, video or canvas html element
-          const prediction = await model.predict(webcam.canvas);
-          for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-              prediction[i].className +
-              ": " +
-              prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-          }
-        }
-      </script>
-
-      <h1 id="what_is">What is Machine Learning ?</h1>
-      <p id="what_answer">
-        Machine learning is a subset of Artificial Intelligence (AI),
-        where models(machines) are train on a large amount data to learn 
-         and identify the patterns of the data through an algorithm, and
-        place it under a specific category (in Teachable Machine). Over 
-        time, as the algorithm is trained, it “learns” this repetitive 
-        data. Using this knowledge, it makes complex connections, which 
-        then can be used to look at a new file and then categorize it.
-      </p>
-    </body>
-  </html>
-</DOCTYPE>
+  <!-- Machine Learning Explanation -->
+  <section class="ml-explanation">
+    <h2 id="what_is">What is Machine Learning? 🤖</h2>
+    <p id="what_answer">
+      Machine Learning (ML) is a <strong>subset of Artificial Intelligence (AI)</strong> that enables computers 
+      to learn patterns from data without being explicitly programmed. In <strong>Zeebo's case</strong>, 
+      the algorithm has been trained on thousands of images to recognize <strong>different types of waste</strong>. 
+      Using this knowledge, Zeebo can <strong>automatically classify</strong> new waste items, ensuring they are sorted 
+      into the correct recycling category.
+    </p>
+  </section>
+</body>
+</html>
