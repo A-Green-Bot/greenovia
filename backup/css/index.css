@@ -326,67 +326,6 @@ video {
   box-shadow: var(--shadow-md);
 }
 
-
-/* Facts Section */
-.facts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-md);
-  margin: var(--spacing-lg) 0;
-}
-
-.fact-card {
-  background: var(--white);
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-normal);
-}
-
-.fact-card:hover {
-  transform: translateY(-5px);
-}
-
-.fact-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.fact-content {
-  padding: var(--spacing-md);
-}
-
-/* Centering and Wrapping 'More Facts' Button */
-.fact-btn-container {  /* Added container to center the button */
-  display: flex;       /* Enables flexbox */
-  justify-content: center;  /* Centers horizontally */
-  margin-top: var(--spacing-md); /* Adds spacing */
-}
-
-#factBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  font-weight: 600;
-  text-decoration: none;
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-md);
-}
-
-#factBtn:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
-
-
 /* Footer */
 footer {
   background-color: var(--foreground);

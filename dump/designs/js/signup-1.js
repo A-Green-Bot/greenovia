@@ -21,83 +21,67 @@ document.addEventListener('DOMContentLoaded', function() {
       navLinks.classList.toggle('active');
     });
   
-    // Password visibility toggle with smooth transition
+    // Password visibility toggle
     let passwordVisible = false;
     passwordToggle.addEventListener('click', () => {
       passwordVisible = !passwordVisible;
       passwordInput.type = passwordVisible ? 'text' : 'password';
       passwordToggle.textContent = passwordVisible ? '🙈' : '👀';
-      passwordToggle.style.transform = 'translateY(-50%) scale(1.1)';
-      setTimeout(() => {
-        passwordToggle.style.transform = 'translateY(-50%) scale(1)';
-      }, 100);
     });
   
     // Real-time password validation
     passwordInput.addEventListener('input', validatePassword);
-  
+
     function validatePassword() {
       const password = passwordInput.value;
-      
-      // Update requirements with smooth transitions
-      const requirements = [
-        { elem: lengthReq, test: password.length >= 8 },
-        { elem: lowercaseReq, test: /[a-z]/.test(password) },
-        { elem: uppercaseReq, test: /[A-Z]/.test(password) },
-        { elem: numberReq, test: /[0-9]/.test(password) }
-      ];
-  
-      requirements.forEach(({ elem, test }) => {
-        if (test) {
-          elem.classList.add('valid');
-        } else {
-          elem.classList.remove('valid');
-        }
-      });
+
+      // Update requirements
+      lengthReq.classList.toggle('valid', password.length >= 8);
+      lowercaseReq.classList.toggle('valid', /[a-z]/.test(password));
+      uppercaseReq.classList.toggle('valid', /[A-Z]/.test(password));
+      numberReq.classList.toggle('valid', /[0-9]/.test(password));
     }
   
     // Form validation
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       let isValid = true;
-      
+
       // Reset error messages
       document.querySelectorAll('.error-message').forEach(msg => msg.textContent = '');
   
       // Validate first name
       if (firstnameInput.value.trim() === '') {
-        document.getElementById('firstname-error').textContent = 'Required';
+        document.getElementById('firstname-error').textContent = 'First name is required';
         isValid = false;
       } else if (/\s/.test(firstnameInput.value)) {
-        document.getElementById('firstname-error').textContent = 'No spaces allowed';
+        document.getElementById('firstname-error').textContent = 'First name should not contain spaces';
         isValid = false;
       }
   
       // Validate last name
       if (lastnameInput.value.trim() === '') {
-        document.getElementById('lastname-error').textContent = 'Required';
+        document.getElementById('lastname-error').textContent = 'Last name is required';
         isValid = false;
       } else if (/\s/.test(lastnameInput.value)) {
-        document.getElementById('lastname-error').textContent = 'No spaces allowed';
+        document.getElementById('lastname-error').textContent = 'Last name should not contain spaces';
         isValid = false;
       }
   
       // Validate email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailInput.value)) {
-        document.getElementById('email-error').textContent = 'Valid email required';
+        document.getElementById('email-error').textContent = 'Please enter a valid email address';
         isValid = false;
       }
   
       // Validate password
       const password = passwordInput.value;
-      const passwordValid = password.length >= 8 && 
-                           /[a-z]/.test(password) && 
-                           /[A-Z]/.test(password) && 
-                           /[0-9]/.test(password);
-      
-      if (!passwordValid) {
-        document.getElementById('password-error').textContent = 'Password must meet all requirements';
+      if (password.length < 8 ||
+          !/[a-z]/.test(password) ||
+          !/[A-Z]/.test(password) ||
+          !/[0-9]/.test(password)) {
+        document.getElementById('password-error').textContent = 'Password does not meet requirements';
         isValid = false;
       }
   
@@ -112,17 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
       input.addEventListener('input', function() {
         const errorId = input.id + '-error';
         document.getElementById(errorId).textContent = '';
-      });
-    });
-  
-    // Add focus styles for better visual feedback
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-      input.addEventListener('focus', () => {
-        input.parentElement.classList.add('focused');
-      });
-      input.addEventListener('blur', () => {
-        input.parentElement.classList.remove('focused');
       });
     });
   });

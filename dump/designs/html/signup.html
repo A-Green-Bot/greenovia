@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sign Up - Greenovia</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}"
+      type="image/jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lucide-static@0.321.0/font/lucide.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/signup.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <img
+            src="{{ url_for('static', filename='images/logos/logo.jpg') }}"
+            alt="Greenovia"
+          />
+          <span>Greenovia</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="/greenovia" class="nav-link">Our AI</a>
+          <a href="/login" class="nav-link">Login</a>
+          <a href="/signup" class="nav-link">Signup</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="signup-container">
+      <div class="signup-content" data-aos="fade-up">
+        <h1>Create Account</h1>
+        <p class="subtitle">Join us in making the world a better place!</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">
+          <i class="lucide-alert-circle"></i>
+          {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <form
+          id="signupForm"
+          action="/signup"
+          method="POST"
+          class="signup-form"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                required
+                autocomplete="given-name"
+                placeholder="Enter your first name"
+              />
+              <span class="validation-icon"></span>
+            </div>
+            <span class="error-message" id="firstname-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                required
+                autocomplete="family-name"
+                placeholder="Enter your last name"
+              />
+              <span class="validation-icon"></span>
+            </div>
+            <span class="error-message" id="lastname-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-wrapper">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="Enter your email"
+              />
+              <span class="validation-icon"></span>
+            </div>
+            <span class="error-message" id="email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="new-password"
+                placeholder="Create a password"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                aria-label="Toggle password visibility"
+              >
+                <i class="lucide-eye"></i>
+              </button>
+              <span class="validation-icon"></span>
+            </div>
+            <span class="error-message" id="password-error"></span>
+
+            <div class="password-requirements">
+              <div class="requirement" data-requirement="length">
+                <i class="lucide-circle"></i>
+                At least 8 characters
+              </div>
+              <div class="requirement" data-requirement="lowercase">
+                <i class="lucide-circle"></i>
+                One lowercase letter
+              </div>
+              <div class="requirement" data-requirement="uppercase">
+                <i class="lucide-circle"></i>
+                One uppercase letter
+              </div>
+              <div class="requirement" data-requirement="number">
+                <i class="lucide-circle"></i>
+                One number
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="button button-primary">
+            <i class="lucide-user-plus"></i>
+            Create Account
+          </button>
+
+          <p class="login-link">
+            Already have an account?
+            <a href="/login">Login here</a>
+          </p>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2025 Greenovia | Formerly "A Green Bot" |
+        <a
+          href="https://linktr.ee/dohoudanielfavour"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="lucide-github"></i>
+          Daniel Dohou
+        </a>
+        | All Rights Reserved
+      </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+  </body>
+</html>
