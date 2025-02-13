@@ -1,31 +1,4 @@
-:root {
-  --primary: #2ecc71;
-  --primary-dark: #27ae60;
-  --secondary: #3498db;
-  --accent: #e74c3c;
-  --background: #f5f6fa;
-  --foreground: #2c3e50;
-  --white: #ffffff;
-
-  --font-heading: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 350ms ease;
-
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-/* Reset & Base Styles */
+/* Modern CSS Reset */
 *,
 *::before,
 *::after {
@@ -34,11 +7,51 @@
   box-sizing: border-box;
 }
 
+/* Custom Properties */
+:root {
+  /* Colors */
+  --primary: #2ECC71;
+  --primary-dark: #27AE60;
+  --secondary: #3498DB;
+  --accent: #E74C3C;
+  --background: #F5F6FA;
+  --foreground: #2C3E50;
+  --white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Animations */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
 body {
   font-family: var(--font-body);
-  background-color: var(--background);
-  color: var(--foreground);
   line-height: 1.6;
+  color: var(--foreground);
+  background-color: var(--background);
+  overflow-x: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -95,7 +108,7 @@ body {
 }
 
 .nav-link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -128,64 +141,112 @@ body {
   transition: var(--transition-normal);
 }
 
-/* 404 Content */
+/* Error Page Styles */
 .error-container {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
   margin-top: 60px;
 }
 
 .error-content {
   max-width: 600px;
-  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-md);
 }
 
-.error-title {
-  font-size: clamp(4rem, 15vw, 8rem);
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-  margin-bottom: var(--spacing-md);
+/* Error Animation */
+.error-animation {
+  margin-bottom: var(--spacing-lg);
+}
+
+.planet {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  margin: 0 auto;
   position: relative;
   animation: float 6s ease-in-out infinite;
 }
 
-.error-subtitle {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  color: var(--foreground);
-  margin-bottom: var(--spacing-md);
+.planet-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 60px;
 }
 
-.error-text {
-  color: var(--muted);
-  margin-bottom: var(--spacing-lg);
-  font-size: 1.1rem;
+.eyes {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  margin: 0 auto;
 }
 
-/* Animated Earth Icon */
-.earth-icon {
-  width: 200px;
-  height: 200px;
-  margin-bottom: var(--spacing-lg);
+.eyes::before,
+.eyes::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  border-radius: 50%;
+  animation: blink 3s ease-in-out infinite;
+}
+
+.mouth {
+  width: 30px;
+  height: 10px;
+  border: 3px solid var(--white);
+  border-radius: 0 0 15px 15px;
+  margin: 10px auto 0;
+  border-top: 0;
+}
+
+.recycle-symbols {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   animation: spin 20s linear infinite;
 }
 
-.earth-icon i {
-  font-size: 200px;
-  color: var(--primary);
+.recycle-symbols i {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 2rem;
 }
 
-/* Buttons */
-.button-group {
+.recycle-symbols i:nth-child(1) { top: 20%; left: 20%; }
+.recycle-symbols i:nth-child(2) { top: 20%; right: 20%; }
+.recycle-symbols i:nth-child(3) { bottom: 20%; left: 50%; }
+
+/* Typography */
+h1 {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 800;
+  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: var(--spacing-md);
+  color: var(--foreground);
+}
+
+/* Action Buttons */
+.action-buttons {
   display: flex;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
   justify-content: center;
+  margin: var(--spacing-lg) 0;
 }
 
 .button {
@@ -197,19 +258,16 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: all var(--transition-normal);
-  cursor: pointer;
 }
 
 .button-primary {
   background-color: var(--primary);
   color: var(--white);
-  border: none;
 }
 
 .button-secondary {
-  background-color: transparent;
-  color: var(--foreground);
-  border: 2px solid var(--primary);
+  background-color: var(--secondary);
+  color: var(--white);
 }
 
 .button:hover {
@@ -217,13 +275,45 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-.button-primary:hover {
-  background-color: var(--primary-dark);
+/* Helpful Links */
+.helpful-links {
+  margin-top: var(--spacing-xl);
 }
 
-.button-secondary:hover {
-  background-color: var(--primary);
+.helpful-links h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--foreground);
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--spacing-md);
+  border-radius: 1rem;
+  background: var(--white);
+  text-decoration: none;
+  color: var(--foreground);
+  transition: all var(--transition-normal);
+}
+
+.quick-link:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--white);
+}
+
+.quick-link i {
+  font-size: 1.5rem;
 }
 
 /* Footer */
@@ -247,26 +337,23 @@ footer a:hover {
 
 /* Animations */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes blink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
+  /* Mobile Navigation */
   .mobile-menu-btn {
     display: block;
   }
@@ -300,24 +387,21 @@ footer a:hover {
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
-  .button-group {
+  /* Action Buttons */
+  .action-buttons {
     flex-direction: column;
-    width: 100%;
-    max-width: 300px;
+    gap: var(--spacing-sm);
   }
 
-  .button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .earth-icon {
+  /* Planet Animation */
+  .planet {
     width: 150px;
     height: 150px;
   }
 
-  .earth-icon i {
-    font-size: 150px;
+  /* Typography */
+  .error-content {
+    padding: var(--spacing-sm);
   }
 }
 

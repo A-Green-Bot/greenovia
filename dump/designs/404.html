@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | Greenovia</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}" type="image/jpg">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.321.0/font/lucide.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">
+        <img src="{{ url_for('static', filename='images/logos/logo.jpg') }}" alt="Greenovia">
+        <span>Greenovia</span>
+      </a>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="/greenovia" class="nav-link">Our AI</a>
+        <a href="/login" class="nav-link">Login</a>
+        <a href="/signup" class="nav-link">Signup</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="error-container">
+    <div class="error-content" data-aos="fade-up">
+      <div class="error-illustration">
+        <i class="lucide-leaf error-icon"></i>
+        <div class="error-code">404</div>
+      </div>
+      
+      <h1>Oops! Page Not Found</h1>
+      <p>The page you're looking for seems to have wandered off into the wilderness.</p>
+      
+      <div class="action-buttons">
+        <a href="/" class="button button-primary">
+          <i class="lucide-home"></i>
+          Return Home
+        </a>
+        <!-- button class="button button-secondary" onclick="history.back()">
+          <i class="lucide-arrow-left"></i>
+          Go Back
+        </!-->
+      </div>
+
+      <!-- class="error-suggestions">
+        <h2>You might want to:</h2>
+        <ul>
+          <li>
+            <i class="lucide-check"></i>
+            Double-check the URL for typos
+          </li>
+          <li>
+            <i class="lucide-refresh-cw"></i>
+            Refresh the page
+          </li>
+          <li>
+            <i class="lucide-search"></i>
+            Try searching for what you need
+          </li>
+        </ul>
+      </ -->
+    </div>
+
+    <div class="floating-leaves">
+      <i class="lucide-leaf leaf-1"></i>
+      <i class="lucide-leaf leaf-2"></i>
+      <i class="lucide-leaf leaf-3"></i>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2025 Greenovia | Formerly "A Green Bot" | 
+      <a href="https://linktr.ee/dohoudanielfavour" target="_blank" rel="noopener noreferrer">
+        <i class="lucide-github"></i>
+        Daniel Dohou
+      </a> 
+      | All Rights Reserved
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{{ url_for('static', filename='js/404.js') }}"></script>
+</body>
+</html>

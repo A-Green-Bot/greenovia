@@ -1,4 +1,95 @@
-<title></title>
-    <link rel="icon" href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}" type="image/jpg">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Greenovia</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/logos/logo.jpg') }}"
+      type="image/jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lucide-static@0.321.0/font/lucide.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/logos/greenovia.jpg') }}"
+      type="image/jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/404.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <img
+            src="{{ url_for('static', filename='images/logos/logo.jpg') }}"
+            alt="Greenovia"
+          />
+          <span>Greenovia</span>
+        </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="/greenovia" class="nav-link">Our AI</a>
+          <a href="/login" class="nav-link">Login</a>
+          <a href="/signup" class="nav-link">Signup</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="error-container">
+      <div class="error-content" data-aos="fade-up">
+        <!-- div class="earth-icon">
+          <i class="lucide-globe"></i>
+        </!-->
+        <h1 class="error-title">404</h1>
+        <h2 class="error-subtitle">Oops! Page Not Found</h2>
+        <p class="error-text">
+          The page you're looking for seems to have wandered off. Like plastic
+          in our oceans, it's lost but not forgotten. Let's get you back on
+          track to saving our planet!
+        </p>
+        <div class="button-group">
+          <a href="/" class="button button-primary">
+            <i class="lucide-home"></i>
+            Return Home
+          </a>
+          <a href="/greenovia" class="button button-secondary">
+            <i class="lucide-recycle"></i>
+            Try Zeebo
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2025 Greenovia | Formerly "A Green Bot" |
+        <a
+          href="https://linktr.ee/dohoudanielfavour"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="lucide-github"></i>
+          Daniel Dohou
+        </a>
+        | All Rights Reserved
+      </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="{{ url_for('static', filename='js/404.js') }}"></script>
+  </body>
+</html>
