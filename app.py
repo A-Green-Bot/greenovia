@@ -190,5 +190,5 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     port = int(environ.get("PORT", 5000))  # Default to 5000 if PORT is not set
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=False)
     # app.run(debug=True, port=5000)
